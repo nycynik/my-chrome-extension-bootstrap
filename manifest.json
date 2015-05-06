@@ -1,0 +1,25 @@
+{
+     "name"                    : "__MSG_name_long__"
+   , "short_name"              : "__MSG_name_shrt__"
+   , "description"             : "__MSG_name_desc__"
+   , "version"                 : "1.0.0.1"
+
+   , "default_locale"          : "en_US"
+   , "manifest_version"        : 2
+   , "minimum_chrome_version"  : "28.0"
+   , "permissions"             : ["tabs", "http://*/*", "https://*/*", "contextMenus", "webRequest", "webRequestBlocking", "webNavigation", "unlimitedStorage", "notifications"]
+   , "update_url"              : "https://clients2.google.com/service/update2/crx"
+
+   ,"content_scripts"          : [
+      {"js": [ "resources/at_document_start.js" ], "all_frames": true, "matches": [ "http://*/*", "https://*/*" ], "run_at": "document_start" }
+    , {"js": [ "resources/at_document_end.js"   ], "all_frames": true, "matches": [ "http://*/*", "https://*/*" ], "run_at": "document_end"   }
+    , {"js": [ "resources/at_document_idle.js"  ], "all_frames": true, "matches": [ "http://*/*", "https://*/*" ], "run_at": "document_idle"  }
+   ]
+   ,"icons": {
+      "512": "resources/icon.png"
+   }
+   ,"web_accessible_resources": [ 
+      "resources/*.png"
+     ,"_locales/en_US/messages.json" 
+    ]
+}
